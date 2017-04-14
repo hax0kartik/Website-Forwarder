@@ -1,7 +1,7 @@
 BasicInfo:
-  Title                   : "Imgurup-3ds"
+  Title                   : "Website-Forwarder"
   CompanyCode             : "00"
-  ProductCode             : "CTR-E-IMGUR"
+  ProductCode             : "CTR-E-FORWARD"
   ContentType             : Application
   Logo                    : Nintendo # Nintendo / Licensed / Distributed / iQue / iQueForSystem
 
