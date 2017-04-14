@@ -37,14 +37,8 @@ APP_DESCRIPTION :=  "Website Forwader"
 APP_AUTHOR      :=  "Kartik"
 APP_PRODUCT_CODE:=  CTR-E-FORW
 APP_UNIQUE_ID   :=  0x6890
+BUILD_LINK		:=  https://reddit.com/r/3dshacks
 ICON            :=  assets/icon.png
-
-APP_TITLE       :=  $(shell echo "$(APP_TITLE)" | cut -c1-128)
-APP_DESCRIPTION :=  $(shell echo "$(APP_DESCRIPTION)" | cut -c1-256)
-APP_AUTHOR      :=  $(shell echo "$(APP_AUTHOR)" | cut -c1-128)
-APP_PRODUCT_CODE:=  $(shell echo $(APP_PRODUCT_CODE) | cut -c1-16)
-APP_UNIQUE_ID   :=  $(shell echo $(APP_UNIQUE_ID) | cut -c1-7)
-
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
@@ -67,8 +61,7 @@ LIBS	:=  -lctru
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:= $(CTRULIB) $(PORTLIBS)
-
+LIBDIRS	:= $(CTRULIB) 
 
 #---------------------------------------------------------------------------------
 # no real need to edit anything past this point unless you need to add additional
@@ -141,13 +134,14 @@ all: $(BUILD)
 
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
-	@find $(SOURCES) -type d -printf "%P\0" | xargs -0 -I {} mkdir -p $(BUILD)/{}
+	@sed -i '/APT_StartSystemApplet/c\APT_StartSystemApplet(0x114, "$(BUILD_LINK)", 1024, 0);' $(TOPDIR)/source/main.c 
+	@find $(SOURCES) -type d -printf "%P\0" | xargs -0 -I {} mkdir -p $(BUILD)/{} 
 	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 #---------------------------------------------------------------------------------
 clean:
 	@echo clean ...
-	@rm -rf $(BUILD) $(OUTPUT).elf $(OUTPUT).cia /assets/banner.bin /assets/icon.bin
+	@rm -rf $(BUILD) $(OUTPUT).elf $(OUTPUT).cia $(TOPDIR)/assets/banner.bin $(TOPDIR)/assets/icon.bin
 
 #---------------------------------------------------------------------------------
 else
@@ -186,6 +180,8 @@ $(OUTPUT)_stripped.elf: $(OUTPUT).elf
 # deselect if you want a .cia build (you need all the required files)
 #---------------------------------------------------------------------------------
 $(OUTPUT).cia: $(OUTPUT)_stripped.elf $(TOPDIR)/assets/banner.bin $(TOPDIR)/assets/icon.bin
+	
+	@sed -i '/UniqueId/c\  UniqueId 	: $(APP_UNIQUE_ID)' $(TOPDIR)/assets/cia.rsf
 	$(TOPDIR)/makerom -f cia -o $(OUTPUT).cia -rsf $(TOPDIR)/assets/cia.rsf -target t -exefslogo -elf $(OUTPUT)_stripped.elf -icon $(TOPDIR)/assets/icon.bin -banner $(TOPDIR)/assets/banner.bin -DAPP_TITLE="$(APP_TITLE)" -DAPP_PRODUCT_CODE="$(APP_PRODUCT_CODE)" -DAPP_UNIQUE_ID="$(APP_UNIQUE_ID)" -DAPP_ROMFS="$(TOPDIR)/$(ROMFS)"
 	@echo "built ... $(notdir $@)"
 

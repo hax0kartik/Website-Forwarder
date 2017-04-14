@@ -8,7 +8,7 @@ int main()
 {
 	gfxInitDefault();
 	APT_PrepareToStartSystemApplet(0x114);
-	APT_StartSystemApplet(0x114, "https://reddit.com/r/3dshacks", 1024, 0);
+APT_StartSystemApplet(0x114, "https://reddit.com/r/3dshacks", 1024, 0);
 	gspWaitForVBlank();
 	gfxSwapBuffers();
 	gfxExit();
