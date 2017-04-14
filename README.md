@@ -1,7 +1,7 @@
 # Website-Forwader
 Website-Forwaders for your 3ds's homemenu!
 
-(This guide is meant for Windows Users)
+(This guide is meant only for Windows Users for now)
 
 ## Steps to build for your own sites
 
@@ -10,7 +10,6 @@ Website-Forwaders for your 3ds's homemenu!
 ### Requirements:-
   * Devkitpro & ctrulib
     * [*Steps for setting up devkitpro & ctrulib on Windows*](https://www.3dbrew.org/wiki/Setting_up_Development_Environment#Windows)
-    * [*Steps for setting up devkitpro & ctrulib on Unix-like platforms*](https://www.3dbrew.org/wiki/Setting_up_Development_Environment#Unix-like_platforms)
     
   * A 48x48 icon named as `icon.png`
   
