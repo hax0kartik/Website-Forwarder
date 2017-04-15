@@ -1,5 +1,5 @@
-# Website-Forwader
-Website-Forwaders for your 3ds's homemenu!
+# Website-Forwarder
+Website-Forwarders for your 3ds's homemenu!
 
 (This guide is meant only for Windows Users for now)
 
@@ -8,10 +8,11 @@ Website-Forwaders for your 3ds's homemenu!
 -----------
 
 ### Requirements:-
+  * [Source code extracted to some place]https://github.com/Pirater12/Website-Forwarder/archive/master.zip	
+
   * Devkitpro & ctrulib
     * [*Steps for setting up devkitpro & ctrulib on Windows*](https://www.3dbrew.org/wiki/Setting_up_Development_Environment#Windows)
 
-    
   * A 48x48 icon named as `icon.png`
   
   * A 256x128 banner named as `banner.png`
