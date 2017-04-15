@@ -8,7 +8,7 @@ Website-Forwarders for your 3ds's homemenu!
 -----------
 
 ### Requirements:-
-  * [Source code extracted to some place]https://github.com/Pirater12/Website-Forwarder/archive/master.zip	
+  * [Source code extracted to some place](https://github.com/Pirater12/Website-Forwarder/archive/master.zip)	
 
   * Devkitpro & ctrulib
     * [*Steps for setting up devkitpro & ctrulib on Windows*](https://www.3dbrew.org/wiki/Setting_up_Development_Environment#Windows)
